@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "605357584779",
+    "project_id": "whatsapp-dbb48",
+    "storage_bucket": "whatsapp-dbb48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605357584779:android:58fd37047c36eda7c0bf8e",
+        "android_client_info": {
+          "package_name": "com.souravghosh.whatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605357584779-hv8e7mqejvl6l62tmrs64st11nfau7ta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJNOWs03zbNgPx7GVjrJiKOeueFRcarkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605357584779-hv8e7mqejvl6l62tmrs64st11nfau7ta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

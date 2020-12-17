@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signinactivity">
+
+    <TextView
+        android:id="@+id/whatsapp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/whatsapp"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/developedbysouravghosh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/developed_by_sourav_ghosh"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/whatsapp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="5dp" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/developedbysouravghosh"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="24sp"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="30dp"
+        android:autofillHints="" />
+
+
+    <CheckBox
+        android:id="@+id/showpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="Show Password"
+        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/signin"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/green"
+        android:text="@string/login"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/register"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signin" />
+
+    <TextView
+        android:id="@+id/forgetpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:text="@string/forget_password"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/register"
+        app:layout_constraintTop_toTopOf="@id/register" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
