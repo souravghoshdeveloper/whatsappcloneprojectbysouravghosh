@@ -18,7 +18,6 @@ public class fragmentadaptar extends FragmentPagerAdapter {
             case 0: return new chats_fragment();
             case 1: return new status_fragment();
             case 2: return new call_fragment();
-            case 3: return new user_fragment();
 
             default: return new chats_fragment();
         }
@@ -26,7 +25,7 @@ public class fragmentadaptar extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 
     @Nullable
@@ -41,9 +40,6 @@ public class fragmentadaptar extends FragmentPagerAdapter {
         }
         else if (position == 2){
             title = "CALLs";
-        }
-        else if (position == 3){
-            title = "USER";
         }
         return title;
     }
