@@ -1,6 +1,7 @@
 package com.souravghosh.whatsapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +35,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.Viewholder>{
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
-    User user = list.get(position);
+    final User user = list.get(position);
         Picasso.get().load(user.getprofilepic).placeholder(R.drawable.ic_profile).into(holder.Image);
         holder.username.setText(user.fullName);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Chat_Detail_Activity.class);
+                intent.putExtra("UserId", user.getUserId());
+                intent.putExtra("profile_image", user.getprofilepic);
+                intent.putExtra("fullname", user.fullName);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

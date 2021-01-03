@@ -1,7 +1,7 @@
 package com.souravghosh.whatsapp;
 
 public class User {
-    public String fullName, age, email, getprofilepic;
+    public String fullName, age, email, getprofilepic, userId;
 
     public User(){
 
@@ -13,6 +13,10 @@ public class User {
         this.email = email;
     }
 
-    public void getUserId(String key) {
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String key) {
     }
 }
