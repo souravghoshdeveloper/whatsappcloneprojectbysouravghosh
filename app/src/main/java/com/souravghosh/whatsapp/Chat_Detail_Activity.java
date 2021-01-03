@@ -27,7 +27,7 @@ public class Chat_Detail_Activity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        String senderId = auth.getUid();
+        final String senderId = auth.getUid();
         String reciveId = getIntent().getStringExtra("UserId");
         String fullname = getIntent().getStringExtra("fullname");
         String profile_image = getIntent().getStringExtra("profile_image");
