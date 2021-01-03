@@ -1,6 +1,7 @@
 package com.souravghosh.whatsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +10,12 @@ import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.souravghosh.whatsapp.Adapter.ChatAdapter;
+import com.souravghosh.whatsapp.Modeles.MassagesModel;
 import com.souravghosh.whatsapp.databinding.ActivityChatDetailBinding;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class Chat_Detail_Activity extends AppCompatActivity {
 
@@ -43,5 +48,15 @@ public class Chat_Detail_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        final ArrayList<MassagesModel> massagesModels = new ArrayList<>();
+
+        final ChatAdapter chatAdapter = new ChatAdapter(massagesModels, this);
+
+        binding.chatrecyclerview.setAdapter(chatAdapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        binding.chatrecyclerview.setLayoutManager(layoutManager);
+        
     }
 }
