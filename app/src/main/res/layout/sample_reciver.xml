@@ -9,6 +9,7 @@
     android:layout_marginLeft="5dp"
     android:layout_marginEnd="7dp"
     android:layout_marginRight="7dp"
+    android:layout_marginBottom="15dp"
     android:background="@drawable/bg_reciver"
     android:maxWidth="270dp"
     android:maxHeight="350dp"
@@ -19,25 +20,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="16dp"
         android:inputType="textLongMessage|textMultiLine"
         android:maxWidth="230dp"
         android:minWidth="50dp"
-        android:text="TextView"
+        android:paddingRight="8dp"
+        android:text="msg"
         app:layout_constraintBottom_toTopOf="@+id/reciverTime"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.875"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/reciverTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:text="01:00am"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="29dp" />
+        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
