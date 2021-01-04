@@ -39,7 +39,7 @@ public class Chat_Detail_Activity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         final String senderId = auth.getUid();
-        String reciveId = getIntent().getStringExtra("UserId");
+        final String reciveId = getIntent().getStringExtra("userId");
         String fullname = getIntent().getStringExtra("fullname");
         String profile_image = getIntent().getStringExtra("profile_image");
 
@@ -94,10 +94,10 @@ public class Chat_Detail_Activity extends AppCompatActivity {
 
                 database.getReference().child("Chats").child(senderroom).push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
+                    public void onSuccess(Void Void) {
                         database.getReference().child("Chats").child(reciverroom).push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(Void aVoid) {
+                            public void onSuccess(Void Void) {
 
                             }
                         });

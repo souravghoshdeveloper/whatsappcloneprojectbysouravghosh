@@ -42,7 +42,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.Viewholder>{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Chat_Detail_Activity.class);
-                intent.putExtra("UserId", user.getUserId());
+                intent.putExtra("userId", user.getUserId());
                 intent.putExtra("profile_image", user.getprofilepic);
                 intent.putExtra("fullname", user.fullName);
                 context.startActivity(intent);
