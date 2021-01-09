@@ -24,12 +24,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.souravghosh.whatsapp.databinding.ActivityChatDetailBinding;
 
 import java.util.regex.Pattern;
 
 public class registeruser extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView gotosignin, registeruser, genderdata;
+    private TextView gotosignin, registeruser, genderdata, termsandconditionstext;
     private EditText editTextFullname, editTextage, editTextemail, editTextpassword, editTextconfirmpassword;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
@@ -51,6 +52,9 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
 
         registeruser = (Button) findViewById(R.id.registeruser);
         registeruser.setOnClickListener(this);
+
+        termsandconditionstext = (TextView) findViewById(R.id.termsandconditionstext);
+        termsandconditionstext.setOnClickListener(this);
 
         editTextFullname = (EditText) findViewById(R.id.fullName);
         editTextage = (EditText) findViewById(R.id.age);
@@ -106,6 +110,10 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             case R.id.registeruser:
                 registeruser();
                 break;
+            case R.id.termsandconditionstext:
+                startActivity(new Intent(this, terms_and_conditions.class));
+                finish();
+            break;
         }
     }
 

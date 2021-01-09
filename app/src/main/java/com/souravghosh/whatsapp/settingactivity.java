@@ -28,7 +28,7 @@ public class settingactivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
 
-    ImageButton backbutton;
+    private ImageButton backbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
