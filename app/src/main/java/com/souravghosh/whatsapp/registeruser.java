@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,9 +29,11 @@ import java.util.regex.Pattern;
 
 public class registeruser extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView gotosignin, registeruser;
+    private TextView gotosignin, registeruser, genderdata;
     private EditText editTextFullname, editTextage, editTextemail, editTextpassword, editTextconfirmpassword;
-    RadioGroup male, female;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
+
     private ProgressBar progressbar;
 
     CheckBox showpassword;
@@ -49,11 +52,29 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         registeruser = (Button) findViewById(R.id.registeruser);
         registeruser.setOnClickListener(this);
 
-        editTextFullname = (EditText) findViewById(R.id.fullname);
+        editTextFullname = (EditText) findViewById(R.id.fullName);
         editTextage = (EditText) findViewById(R.id.age);
         editTextemail = (EditText) findViewById(R.id.email);
         editTextpassword = (EditText) findViewById(R.id.password);
         editTextconfirmpassword = (EditText) findViewById(R.id.confirmpassword);
+        radioGroup = (RadioGroup) findViewById(R.id.genderButton);
+
+        genderdata = (TextView) findViewById(R.id.genderdata);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.male:
+                        radioButton = (RadioButton) findViewById(R.id.male);
+                        break;
+                    case R.id.female:
+                        radioButton = (RadioButton) findViewById(R.id.female);
+                        break;
+                }
+            }
+        });
+
 
 
         progressbar = (ProgressBar) findViewById(R.id.progressBar);
@@ -90,6 +111,7 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
     private void registeruser() {
         final String fullname = editTextFullname.getText().toString().trim();
         final String age = editTextage.getText().toString().trim();
+        final String gender = radioButton.getText().toString().trim();
         final String email = editTextemail.getText().toString().trim();
         String password = editTextpassword.getText().toString().trim();
         String confirmpassword = editTextconfirmpassword.getText().toString().trim();
@@ -158,7 +180,7 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(fullname, age, email);
+                            User user = new User(fullname, age, gender, email);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
