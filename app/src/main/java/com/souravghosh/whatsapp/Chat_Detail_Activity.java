@@ -88,6 +88,10 @@ public class Chat_Detail_Activity extends AppCompatActivity {
         binding.send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (binding.etmsg.getText().toString().isEmpty()){
+                    binding.etmsg.setError("Enter any Message to send");
+                    return;
+                }
                 String message = binding.etmsg.getText().toString();
                 final  MassagesModel model = new MassagesModel(senderId, message);
                 model.setTimetamp(new Date().getTime());
