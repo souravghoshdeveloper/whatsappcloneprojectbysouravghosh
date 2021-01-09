@@ -36,7 +36,7 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
 
     private ProgressBar progressbar;
 
-    CheckBox showpassword;
+    CheckBox showpassword, termsandconditions;
 
     private FirebaseAuth mAuth;
     @Override
@@ -60,6 +60,8 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         radioGroup = (RadioGroup) findViewById(R.id.genderButton);
 
         genderdata = (TextView) findViewById(R.id.genderdata);
+        termsandconditions = findViewById(R.id.termsandconditions);
+
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -78,7 +80,6 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
 
 
         progressbar = (ProgressBar) findViewById(R.id.progressBar);
-
 
         editTextpassword = findViewById(R.id.password);
         showpassword = findViewById(R.id.showpassword);
@@ -116,95 +117,100 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         String password = editTextpassword.getText().toString().trim();
         String confirmpassword = editTextconfirmpassword.getText().toString().trim();
 
-        if(fullname.isEmpty()){
+        if (fullname.isEmpty()) {
             editTextFullname.setError("Full Name is required");
             editTextFullname.requestFocus();
             return;
         }
-        if(fullname.length() > 25){
+        if (fullname.length() > 25) {
             editTextFullname.setError("Please Enter a Valid Name!");
             editTextFullname.requestFocus();
             return;
         }
 
-        if(age.isEmpty()){
+        if (age.isEmpty()) {
             editTextage.setError("Age is required");
             editTextage.requestFocus();
             return;
         }
 
-        if(email.isEmpty()){
+        if (email.isEmpty()) {
             editTextemail.setError("Email is required");
             editTextemail.requestFocus();
             return;
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             editTextemail.setError("Please Enter a Valid Email");
             editTextemail.requestFocus();
             return;
         }
 
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             editTextpassword.setError("Password is required!");
             editTextpassword.requestFocus();
             return;
         }
-        if(password.length() < 6){
+        if (password.length() < 6) {
             editTextpassword.setError("Min. length should be 6 characters!");
             editTextpassword.requestFocus();
             return;
         }
 
-        if(confirmpassword.isEmpty()){
+        if (confirmpassword.isEmpty()) {
             editTextconfirmpassword.setError("Confirm Password is required!");
             editTextconfirmpassword.requestFocus();
             return;
         }
-        if(confirmpassword.length() < 6){
+        if (confirmpassword.length() < 6) {
             editTextconfirmpassword.setError("Min. length should be 6 characters!");
             editTextconfirmpassword.requestFocus();
             return;
         }
 
-        if (!password.equals(confirmpassword))
-        {
+        if (!password.equals(confirmpassword)) {
             editTextpassword.setError("Your Password & Confirm Password Should be Same!");
             editTextpassword.requestFocus();
             return;
         }
 
+        if (termsandconditions.isChecked()) {
 
-        progressbar.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            User user = new User(fullname, age, gender, email);
+            progressbar.setVisibility(View.VISIBLE);
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                User user = new User(fullname, age, gender, email);
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(registeruser.this, "User has Been Registered Sucessfully", Toast.LENGTH_LONG).show();
-                                        startActivity(new Intent(registeruser.this, signinactivity.class));
-                                        finish();
-                                        progressbar.setVisibility((View.GONE));
+                                FirebaseDatabase.getInstance().getReference("Users")
+                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(registeruser.this, "User has Been Registered Sucessfully", Toast.LENGTH_LONG).show();
+                                            startActivity(new Intent(registeruser.this, signinactivity.class));
+                                            finish();
+                                            progressbar.setVisibility((View.GONE));
 
-                                        // redirected to Login Layout
-                                    }else {
-                                        Toast.makeText(registeruser.this, "Failed to Register! Try Again!", Toast.LENGTH_LONG).show();
-                                        progressbar.setVisibility(View.GONE);
+                                            // redirected to Login Layout
+                                        } else {
+                                            Toast.makeText(registeruser.this, "Failed to Register! Try Again!", Toast.LENGTH_LONG).show();
+                                            progressbar.setVisibility(View.GONE);
+                                        }
                                     }
-                                }
-                            });
-                        }else {
-                            Toast.makeText(registeruser.this, "Failed to Register! Try Again!", Toast.LENGTH_LONG).show();
-                            progressbar.setVisibility(View.GONE);
+                                });
+                            } else {
+                                Toast.makeText(registeruser.this, "Failed to Register! Try Again!", Toast.LENGTH_LONG).show();
+                                progressbar.setVisibility(View.GONE);
+                            }
                         }
-                    }
-                });
+                    });
+        } else {
+            Toast.makeText(registeruser.this, "You must accept our terms and Condiction", Toast.LENGTH_LONG).show();
+            termsandconditions.requestFocus();
+            return;
+        }
     }
 }
