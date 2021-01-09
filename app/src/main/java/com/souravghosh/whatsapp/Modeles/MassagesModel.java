@@ -1,7 +1,7 @@
 package com.souravghosh.whatsapp.Modeles;
 
 public class MassagesModel {
-    String uId, message;
+    String uId, message, messageId;
     Long timetamp;
 
     public MassagesModel(String uId, String message, Long timetamp) {
@@ -15,6 +15,14 @@ public class MassagesModel {
         this.message = message;
     }
     public MassagesModel(){}
+
+    public String getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
+    }
 
     public String getuId() {
         return uId;

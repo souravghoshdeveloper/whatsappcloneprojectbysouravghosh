@@ -1,6 +1,9 @@
 package com.souravghosh.whatsapp.Adapter;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.souravghosh.whatsapp.Modeles.MassagesModel;
 import com.souravghosh.whatsapp.R;
 
@@ -19,12 +23,21 @@ public class ChatAdapter extends RecyclerView.Adapter{
 
     ArrayList<MassagesModel> massagesModels;
     Context context;
+    String reciveId;
+
+
     int SENDER_VIEW_TYPE =1;
     int RECEIVER_VIEW_TYPE =2;
 
     public ChatAdapter(ArrayList<MassagesModel> massagesModels, Context context) {
         this.massagesModels = massagesModels;
         this.context = context;
+    }
+
+    public ChatAdapter(ArrayList<MassagesModel> massagesModels, Context context, String reciveId) {
+        this.massagesModels = massagesModels;
+        this.context = context;
+        this.reciveId = reciveId;
     }
 
     @NonNull
@@ -53,7 +66,27 @@ public class ChatAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MassagesModel massagesModel = massagesModels.get(position);
+        final MassagesModel massagesModel = massagesModels.get(position);
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new AlertDialog.Builder(context).setTitle("Delete").setMessage("Are you sure you want to delete this massage?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        String senderRoom = FirebaseAuth.getInstance().getUid() + reciveId;
+                        database.getReference().child("Chats").child(senderRoom).child(massagesModel.getMessageId()).setValue(null);
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+                return false;
+            }
+        });
 
         if(holder.getClass() == SenderViewVolder.class){
             ((SenderViewVolder)holder).senderMsg.setText(massagesModel.getMessage());

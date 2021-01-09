@@ -57,7 +57,7 @@ public class Chat_Detail_Activity extends AppCompatActivity {
 
         final ArrayList<MassagesModel> massagesModels = new ArrayList<>();
 
-        final ChatAdapter chatAdapter = new ChatAdapter(massagesModels, this);
+        final ChatAdapter chatAdapter = new ChatAdapter(massagesModels, this , reciveId);
 
         binding.chatrecyclerview.setAdapter(chatAdapter);
 
@@ -73,6 +73,7 @@ public class Chat_Detail_Activity extends AppCompatActivity {
                 massagesModels.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()){
                     MassagesModel model = snapshot1.getValue(MassagesModel.class);
+                    model.setMessageId(snapshot1.getKey());
                     massagesModels.add(model);
                 }
                 chatAdapter.notifyDataSetChanged();
