@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,8 @@ import java.util.regex.Pattern;
 public class registeruser extends AppCompatActivity implements View.OnClickListener {
 
     private TextView gotosignin, registeruser;
-    private EditText editTextFullname, editTextage, editTextemail, editTextpassword;
+    private EditText editTextFullname, editTextage, editTextemail, editTextpassword, editTextconfirmpassword;
+    RadioGroup male, female;
     private ProgressBar progressbar;
 
     CheckBox showpassword;
@@ -51,6 +53,8 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         editTextage = (EditText) findViewById(R.id.age);
         editTextemail = (EditText) findViewById(R.id.email);
         editTextpassword = (EditText) findViewById(R.id.password);
+        editTextconfirmpassword = (EditText) findViewById(R.id.confirmpassword);
+
 
         progressbar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -88,9 +92,15 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         final String age = editTextage.getText().toString().trim();
         final String email = editTextemail.getText().toString().trim();
         String password = editTextpassword.getText().toString().trim();
+        String confirmpassword = editTextconfirmpassword.getText().toString().trim();
 
         if(fullname.isEmpty()){
             editTextFullname.setError("Full Name is required");
+            editTextFullname.requestFocus();
+            return;
+        }
+        if(fullname.length() > 25){
+            editTextFullname.setError("Please Enter a Valid Name!");
             editTextFullname.requestFocus();
             return;
         }
@@ -113,7 +123,7 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         }
 
         if(password.isEmpty()){
-            editTextpassword.setError("Password is required");
+            editTextpassword.setError("Password is required!");
             editTextpassword.requestFocus();
             return;
         }
@@ -122,6 +132,25 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             editTextpassword.requestFocus();
             return;
         }
+
+        if(confirmpassword.isEmpty()){
+            editTextconfirmpassword.setError("Confirm Password is required!");
+            editTextconfirmpassword.requestFocus();
+            return;
+        }
+        if(confirmpassword.length() < 6){
+            editTextconfirmpassword.setError("Min. length should be 6 characters!");
+            editTextconfirmpassword.requestFocus();
+            return;
+        }
+
+        if (!password.equals(confirmpassword))
+        {
+            editTextpassword.setError("Your Password & Confirm Password Should be Same!");
+            editTextpassword.requestFocus();
+            return;
+        }
+
 
         progressbar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password)
