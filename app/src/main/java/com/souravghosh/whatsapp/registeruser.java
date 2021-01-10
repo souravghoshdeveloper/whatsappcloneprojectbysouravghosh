@@ -111,7 +111,6 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.termsandconditionstext:
                 startActivity(new Intent(this, terms_and_conditions.class));
-                Toast.makeText(registeruser.this, "You are not selected your gender so by default we take it null", Toast.LENGTH_LONG).show();
                 finish();
             break;
         }

@@ -26,11 +26,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class delete_your_account extends AppCompatActivity implements View.OnClickListener{
     private ImageButton backbutton2;
+    private TextView termsandconditionstext;
 
     private EditText editTextEmail, editTextPassword;
     private Button delete_your_account;
 
-    CheckBox showpassword;
+    CheckBox showpassword, termsandconditions;
 
     private FirebaseAuth mAuth;
     private ProgressBar progressbar;
@@ -47,6 +48,11 @@ public class delete_your_account extends AppCompatActivity implements View.OnCli
                 finish();
             }
         });
+
+
+        termsandconditions = findViewById(R.id.termsandconditions);
+        termsandconditionstext = (TextView) findViewById(R.id.termsandconditionstext);
+        termsandconditionstext.setOnClickListener(this);
 
 
         delete_your_account = (Button) findViewById(R.id.delete_your_account);
@@ -79,6 +85,9 @@ public class delete_your_account extends AppCompatActivity implements View.OnCli
             case R.id.delete_your_account:
                 delete_your_account();
                 break;
+            case R.id.termsandconditionstext:
+                startActivity(new Intent(this, termsandcondictionfordeleteaccount.class));
+                break;
         }
     }
 
@@ -86,50 +95,57 @@ public class delete_your_account extends AppCompatActivity implements View.OnCli
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
 
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             editTextEmail.setError("Email is required!");
             editTextEmail.requestFocus();
             return;
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             editTextEmail.setError("Please Enter a Valid Email!");
             editTextEmail.requestFocus();
             return;
         }
 
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             editTextPassword.setError("Password is Required");
             editTextPassword.requestFocus();
             return;
         }
-        if (password.length() < 6){
+        if (password.length() < 6) {
             editTextPassword.setError("Min. Password Length is 6 Characters!");
         }
 
-        progressbar.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (termsandconditions.isChecked()) {
+            progressbar.setVisibility(View.VISIBLE);
 
-                    if (user.isEmailVerified()){
-                        // redirect to user Profile
-                        startActivity(new Intent(delete_your_account.this, permanentlydeleteyouraccount.class));
-                        finish();
-                        progressbar.setVisibility((View.GONE));
-                    }else {
-                        user.sendEmailVerification();
-                        Toast.makeText(delete_your_account.this,"Check Your Email to verify your Account!", Toast.LENGTH_LONG).show();
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                        if (user.isEmailVerified()) {
+                            // redirect to user Profile
+                            startActivity(new Intent(delete_your_account.this, permanentlydeleteyouraccount.class));
+                            finish();
+                            progressbar.setVisibility((View.GONE));
+                        } else {
+                            user.sendEmailVerification();
+                            Toast.makeText(delete_your_account.this, "Check Your Email to verify your Account!", Toast.LENGTH_LONG).show();
+                            progressbar.setVisibility((View.GONE));
+                        }
+
+                    } else {
+                        Toast.makeText(delete_your_account.this, "Failed to Delete Your Account Check your credentials", Toast.LENGTH_LONG).show();
                         progressbar.setVisibility((View.GONE));
                     }
-
-                }else {
-                    Toast.makeText(delete_your_account.this, "Failed to Delete Your Account Check your credentials", Toast.LENGTH_LONG).show();
-                    progressbar.setVisibility((View.GONE));
                 }
-            }
-        });
+            });
+        }else {
+            Toast.makeText(delete_your_account.this, "You must accept our terms and Condiction", Toast.LENGTH_LONG).show();
+            termsandconditions.requestFocus();
+            return;
+        }
     }
 }

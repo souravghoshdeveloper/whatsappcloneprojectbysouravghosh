@@ -40,6 +40,7 @@ public class permanentlydeleteyouraccount extends AppCompatActivity {
         backbutton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(permanentlydeleteyouraccount.this, signinactivity.class));
                 finish();
             }

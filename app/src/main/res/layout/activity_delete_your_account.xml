@@ -94,6 +94,33 @@
         android:layout_marginTop="20dp"
         android:autofillHints="" />
 
+    <CheckBox
+        android:id="@+id/termsandconditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/delete_your_account"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints,SmallSp" />
+
+
+    <TextView
+        android:id="@+id/termsandconditionstext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="9dp"
+        android:text="@string/terms_and_conditions"
+        android:textColor="@color/green"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/termsandconditions"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <CheckBox
         android:id="@+id/showpassword"
