@@ -65,6 +65,7 @@ public class settingactivity extends AppCompatActivity {
         final TextView FullNameTextView = (TextView) findViewById(R.id.fullname);
         final TextView emailTextView = (TextView) findViewById(R.id.emailaddress);
         final TextView ageTextView = (TextView) findViewById(R.id.age);
+        final TextView genderTextView = (TextView) findViewById(R.id.gender);
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -74,11 +75,13 @@ public class settingactivity extends AppCompatActivity {
                     String fullName = userprofile.fullName;
                     String email = userprofile.email;
                     String age = userprofile.age;
+                    String gender = userprofile.gender;
 
                     greetingTextView.setText("WellCome, " + fullName + "!");
                     FullNameTextView.setText(fullName);
                     emailTextView.setText(email);
                     ageTextView.setText(age);
+                    genderTextView.setText(gender);
                 }else {
                     Toast.makeText(settingactivity.this, "You are Loged Out. Please Login again!", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(settingactivity.this, signinactivity.class));
