@@ -60,7 +60,7 @@ public class permanentlydeleteyouraccount extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(permanentlydeleteyouraccount.this);
                 dialog.setTitle("Are You Sure?");
-                dialog.setMessage("If you click here delete your account will be permanantky deleted");
+                dialog.setMessage("If you click on delete button your account will be permanantky deleted. You will be unable to get it back.");
                 dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
