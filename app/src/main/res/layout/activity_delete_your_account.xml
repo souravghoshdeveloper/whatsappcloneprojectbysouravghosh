@@ -4,21 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signinactivity">
+    tools:context=".delete_your_account">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/backbutton"
+        android:layout_width="56dp"
+        android:layout_height="54dp"
+        android:background="@color/green"
+        android:src="@drawable/ic_baseline_keyboard_backspace_24"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/whatsapp_clone"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintStart_toEndOf="@+id/backbutton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39"
+        tools:ignore="MissingConstraints,UnknownIdInLayout" />
 
     <TextView
         android:id="@+id/whatsapp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
         android:text="@string/whatsapp"
         android:textSize="60sp"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-black"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="50dp"
-        android:gravity="center_horizontal" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/developedbysouravghosh"
@@ -75,41 +108,18 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/signin"
+        android:id="@+id/delete_your_account"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/botton_layout"
-        android:text="@string/login"
+        android:text="@string/delete_your_account"
         android:textColor="#ffffff"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/password"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
-
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/register"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signin" />
-
-    <TextView
-        android:id="@+id/forgetpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:text="@string/forget_password"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@id/register"
-        app:layout_constraintTop_toTopOf="@id/register" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -124,16 +134,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-    <TextView
-        android:id="@+id/delete_your_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/delete_your_account"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgetpassword"
-        app:layout_constraintVertical_bias="0.120000005" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

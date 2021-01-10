@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".terms_and_conditions"
+        <activity android:name=".permanentlydeleteyouraccount"
             android:theme="@style/AppThemecustom"/>
+        <activity
+            android:name=".delete_your_account"
+            android:theme="@style/AppThemecustom" />
+        <activity
+            android:name=".terms_and_conditions"
+            android:theme="@style/AppThemecustom" />
         <activity
             android:name=".Chat_Detail_Activity"
             android:theme="@style/AppThemecustom" />

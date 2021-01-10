@@ -24,4 +24,10 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="whatsapp_clone">WhatsApp Clone</string>
+    <string name="setting">Setting</string>
+    <string name="logout">Logout</string>
+    <string name="starred_messages">Starred Messages</string>
+    <string name="whatsapp_web">WhatsApp Web</string>
+    <string name="new_broadcast">New BroadCast</string>
+    <string name="delete_your_account">Delete Your Account</string>
 </resources>

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,10 +24,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class signinactivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView register, forgotpassword, delete_your_account;
+public class delete_your_account extends AppCompatActivity implements View.OnClickListener{
+    private ImageButton backbutton2;
+
     private EditText editTextEmail, editTextPassword;
-    private Button signin;
+    private Button delete_your_account;
 
     CheckBox showpassword;
 
@@ -36,13 +38,19 @@ public class signinactivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signinactivity);
+        setContentView(R.layout.activity_delete_your_account);
+        backbutton2 = (ImageButton) findViewById(R.id.backbutton);
+        backbutton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(delete_your_account.this, signinactivity.class));
+                finish();
+            }
+        });
 
-        register = (TextView) findViewById(R.id.register);
-        register.setOnClickListener(this);
 
-        signin = (Button) findViewById(R.id.signin);
-        signin.setOnClickListener(this);
+        delete_your_account = (Button) findViewById(R.id.delete_your_account);
+        delete_your_account.setOnClickListener(this);
 
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
@@ -50,13 +58,6 @@ public class signinactivity extends AppCompatActivity implements View.OnClickLis
         progressbar = (ProgressBar) findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
-
-        forgotpassword = (TextView) findViewById(R.id.forgetpassword);
-        forgotpassword.setOnClickListener(this);
-
-        delete_your_account = (TextView) findViewById((R.id.delete_your_account));
-        delete_your_account.setOnClickListener(this);
-
 
         editTextPassword = findViewById(R.id.password);
         showpassword = findViewById(R.id.showpassword);
@@ -71,30 +72,18 @@ public class signinactivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         });
-
     }
-
     @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.register:
-                startActivity(new Intent(this, registeruser.class));
-                finish();
-                break;
-            case R.id.signin:
-                userLogin();
-                break;
-            case R.id.forgetpassword:
-                startActivity(new Intent(this, resetpassword.class));
-                break;
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.delete_your_account:
-                startActivity(new Intent(this, delete_your_account.class));
+                delete_your_account();
                 break;
         }
     }
 
-    private void userLogin() {
-        String email = editTextEmail.getText().toString().trim();
+    private void delete_your_account() {
+        final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
 
         if (email.isEmpty()){
@@ -127,17 +116,17 @@ public class signinactivity extends AppCompatActivity implements View.OnClickLis
 
                     if (user.isEmailVerified()){
                         // redirect to user Profile
-                        startActivity(new Intent(signinactivity.this, MainActivity.class));
+                        startActivity(new Intent(delete_your_account.this, permanentlydeleteyouraccount.class));
                         finish();
                         progressbar.setVisibility((View.GONE));
                     }else {
                         user.sendEmailVerification();
-                        Toast.makeText(signinactivity.this,"Check Your Email to verify your Account!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(delete_your_account.this,"Check Your Email to verify your Account!", Toast.LENGTH_LONG).show();
                         progressbar.setVisibility((View.GONE));
                     }
 
                 }else {
-                    Toast.makeText(signinactivity.this, "Failed to Login Please Check your credentials", Toast.LENGTH_LONG).show();
+                    Toast.makeText(delete_your_account.this, "Failed to Delete Your Account Check your credentials", Toast.LENGTH_LONG).show();
                     progressbar.setVisibility((View.GONE));
                 }
             }

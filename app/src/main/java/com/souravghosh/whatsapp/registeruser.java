@@ -67,8 +67,7 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         termsandconditions = findViewById(R.id.termsandconditions);
 
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.male:
@@ -112,6 +111,7 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.termsandconditionstext:
                 startActivity(new Intent(this, terms_and_conditions.class));
+                Toast.makeText(registeruser.this, "You are not selected your gender so by default we take it null", Toast.LENGTH_LONG).show();
                 finish();
             break;
         }
@@ -135,6 +135,11 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             editTextFullname.requestFocus();
             return;
         }
+        if (fullname.length() < 4){
+            editTextFullname.setError("Please Enter a Valid Name!");
+            editTextFullname.requestFocus();
+            return;
+        }
 
         if (age.isEmpty()) {
             editTextage.setError("Age is required");
@@ -152,6 +157,11 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             editTextemail.requestFocus();
             return;
         }
+        if (email.length() > 50){
+            editTextemail.setError("You provide an invalid email");
+            editTextemail.requestFocus();
+            return;
+        }
 
         if (password.isEmpty()) {
             editTextpassword.setError("Password is required!");
@@ -163,6 +173,11 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             editTextpassword.requestFocus();
             return;
         }
+        if (password.length() > 20) {
+            editTextpassword.setError("Max. length should be 20 characters!");
+            editTextpassword.requestFocus();
+            return;
+        }
 
         if (confirmpassword.isEmpty()) {
             editTextconfirmpassword.setError("Confirm Password is required!");
@@ -171,6 +186,11 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         }
         if (confirmpassword.length() < 6) {
             editTextconfirmpassword.setError("Min. length should be 6 characters!");
+            editTextconfirmpassword.requestFocus();
+            return;
+        }
+        if (confirmpassword.length() > 20) {
+            editTextconfirmpassword.setError("Max. length should be 20 characters!");
             editTextconfirmpassword.requestFocus();
             return;
         }

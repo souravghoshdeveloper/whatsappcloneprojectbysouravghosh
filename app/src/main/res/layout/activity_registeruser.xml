@@ -95,7 +95,6 @@
             android:text=""
             android:textSize="20sp" />
 
-
         <RadioButton
             android:id="@+id/male"
             android:layout_width="83dp"
@@ -177,7 +176,7 @@
         android:layout_marginTop="1dp"
         android:textSize="8sp"
         app:layout_constraintBottom_toTopOf="@+id/registeruser"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmpassword"
@@ -188,8 +187,8 @@
         android:id="@+id/termsandconditionstext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/terms_and_conditions"
         android:textColor="@color/green"
