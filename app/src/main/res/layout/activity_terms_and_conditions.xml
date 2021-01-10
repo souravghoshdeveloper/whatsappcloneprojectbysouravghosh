@@ -21,7 +21,7 @@
     <ImageButton
         android:id="@+id/backbutton"
         android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_height="54dp"
         android:background="@color/green"
         android:src="@drawable/ic_baseline_keyboard_backspace_24"
         tools:ignore="MissingConstraints" />
@@ -37,7 +37,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintStart_toEndOf="@+id/backbutton"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:layout_marginLeft="12dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -56,9 +57,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Personal Messaging WhatsApp's end-to-end encryption is used when you message another person using WhatsApp Messenger. End-to-end encryption ensures only you and the person you're communicating with can read or listen to what is sent, and nobody in between, not even WhatsApp. This is because with end-to-end encryption, your messages are secured with a lock, and only the recipient and you have the special key needed to unlock and read them. All of this happens automatically: no need to turn on settings or set up special secret chats to secure your messages."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.051" />
 </androidx.constraintlayout.widget.ConstraintLayout>
