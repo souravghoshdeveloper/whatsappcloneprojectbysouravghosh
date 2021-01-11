@@ -8,4 +8,7 @@
     <color name="lightgray">#D3D3D3</color>
     <color name="white">#FFFFFF</color>
     <color name="lightgreen">#8BC34A</color>
+    <color name="orange">#FFA500</color>
+    <color name="skyblue">#00CCFF</color>
+    <color name="pink">#FF00FF</color>
 </resources>

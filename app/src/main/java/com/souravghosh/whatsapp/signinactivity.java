@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class signinactivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView register, forgotpassword, delete_your_account;
+    private TextView register, forgotpassword, delete_your_account, Developer_informaction;
     private EditText editTextEmail, editTextPassword;
     private Button signin;
 
@@ -56,6 +56,9 @@ public class signinactivity extends AppCompatActivity implements View.OnClickLis
 
         delete_your_account = (TextView) findViewById((R.id.delete_your_account));
         delete_your_account.setOnClickListener(this);
+
+        Developer_informaction = (TextView) findViewById(R.id.Developer_informaction);
+        Developer_informaction.setOnClickListener(this);
 
 
         editTextPassword = findViewById(R.id.password);
@@ -89,6 +92,9 @@ public class signinactivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.delete_your_account:
                 startActivity(new Intent(this, delete_your_account.class));
+                break;
+            case  R.id.Developer_informaction:
+                startActivity(new Intent(this, Developer_info.class));
                 break;
         }
     }
