@@ -88,13 +88,6 @@
             android:textSize="20sp"
             tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/genderdata"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="20sp" />
-
         <RadioButton
             android:id="@+id/male"
             android:layout_width="83dp"

@@ -1,13 +1,18 @@
 package com.souravghosh.whatsapp;
 
 public class User {
-    public String fullName, age, gender, email, getprofilepic, userId;
+    public String fullName;
+    public String age;
+    public String gender;
+    public String email;
+    public String getprofilepic;
+    public String userId;
 
     public User(){
 
     }
 
-    public User(String fullName, String age, String gender, String email, String userId){
+    public User(String fullName,  String age, String gender, String email, String userId){
         this.fullName = fullName;
         this.age = age;
         this.gender = gender;

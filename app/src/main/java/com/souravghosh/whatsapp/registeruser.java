@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 
 public class registeruser extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView gotosignin, registeruser, genderdata, termsandconditionstext;
+    private TextView gotosignin, registeruser, termsandconditionstext;
     private EditText editTextFullname, editTextage, editTextemail, editTextpassword, editTextconfirmpassword;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
@@ -63,7 +63,6 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         editTextconfirmpassword = (EditText) findViewById(R.id.confirmpassword);
         radioGroup = (RadioGroup) findViewById(R.id.genderButton);
 
-        genderdata = (TextView) findViewById(R.id.genderdata);
         termsandconditions = findViewById(R.id.termsandconditions);
 
 
@@ -116,14 +115,12 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void registeruser() {
-        final String fullname = editTextFullname.getText().toString().trim();
-        final String age = editTextage.getText().toString().trim();
-        final String gender = radioButton.getText().toString().trim();
-        final String email = editTextemail.getText().toString().trim();
-        String password = editTextpassword.getText().toString().trim();
-        String confirmpassword = editTextconfirmpassword.getText().toString().trim();
 
+
+
+    private void registeruser() {
+        // fullname validation
+        final String fullname = editTextFullname.getText().toString().trim();
         if (fullname.isEmpty()) {
             editTextFullname.setError("Full Name is required");
             editTextFullname.requestFocus();
@@ -140,12 +137,36 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        if (age.isEmpty()) {
-            editTextage.setError("Age is required");
+
+
+        // age validation
+        final String age1 = editTextage.getText().toString().trim();
+        if (age1.isEmpty()){
+            editTextage.setError("Age is required!");
             editTextage.requestFocus();
             return;
         }
 
+        final int age2 = Integer.parseInt(age1);
+        if (age2 < 13) {
+            editTextage.setError("Min. Age requirement is 13");
+            editTextage.requestFocus();
+            return;
+        }
+        final String age = String.valueOf(age2);
+
+
+
+
+        // Gender Validation
+        final String gender = radioButton.getText().toString().trim();
+
+
+
+
+
+        // email validation
+        final String email = editTextemail.getText().toString().trim();
         if (email.isEmpty()) {
             editTextemail.setError("Email is required");
             editTextemail.requestFocus();
@@ -162,6 +183,11 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+
+
+
+        // password validation
+        String password = editTextpassword.getText().toString().trim();
         if (password.isEmpty()) {
             editTextpassword.setError("Password is required!");
             editTextpassword.requestFocus();
@@ -178,6 +204,12 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+
+
+
+
+        // confirm password
+        String confirmpassword = editTextconfirmpassword.getText().toString().trim();
         if (confirmpassword.isEmpty()) {
             editTextconfirmpassword.setError("Confirm Password is required!");
             editTextconfirmpassword.requestFocus();
@@ -199,6 +231,8 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             editTextpassword.requestFocus();
             return;
         }
+
+
 
         if (termsandconditions.isChecked()) {
 
