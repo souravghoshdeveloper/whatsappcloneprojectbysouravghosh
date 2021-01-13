@@ -216,6 +216,32 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             editTextpassword.requestFocus();
             return;
         }
+        Pattern regex2 = Pattern.compile("[0123456789]");
+        if (!regex2.matcher(password).find())
+        {
+            editTextpassword.setError("Your password should be at least number!");
+            editTextpassword.requestFocus();
+            return;
+        }
+        Pattern regex3 = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
+        if (!regex3.matcher(password).find()){
+            editTextpassword.setError("Your password shuld be at least one character!");
+            editTextpassword.requestFocus();
+            return;
+        }
+        Pattern regex4 = Pattern.compile("[ABCDEFGHIJKLMNOPQRSTUVWXYZ]");
+        if (!regex4.matcher(password).find()){
+            editTextpassword.setError("Your password shuld be at least one Upper case character!");
+            editTextpassword.requestFocus();
+            return;
+        }
+        Pattern regex5 = Pattern.compile("[abcdefghijklmnopqrstuvwxyz]");
+        if (!regex5.matcher(password).find()){
+            editTextpassword.setError("Your password shuld be at least one lower case character!");
+            editTextpassword.requestFocus();
+            return;
+        }
+
 
 
 
@@ -240,8 +266,8 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         }
 
         if (!password.equals(confirmpassword)) {
-            editTextpassword.setError("Your Password & Confirm Password Should be Same!");
-            editTextpassword.requestFocus();
+            editTextconfirmpassword.setError("Your Password & Confirm Password Should be Same!");
+            editTextconfirmpassword.requestFocus();
             return;
         }
 
