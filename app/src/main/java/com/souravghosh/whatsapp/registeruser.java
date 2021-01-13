@@ -142,6 +142,13 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             editTextFullname.requestFocus();
             return;
         }
+        Pattern regex1 = Pattern.compile("[0123456789]");
+        if (regex1.matcher(fullname).find())
+        {
+            editTextFullname.setError("You cannot use any number at your name.");
+            editTextFullname.requestFocus();
+            return;
+        }
 
 
 
