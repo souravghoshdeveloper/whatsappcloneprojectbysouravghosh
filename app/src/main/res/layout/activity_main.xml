@@ -16,7 +16,7 @@
         app:tabIndicatorColor="@color/lightgray"
         app:tabTextColor="@color/lightgray"
         app:tabSelectedTextColor="@color/white"
-        android:elevation="12dp"
+        android:elevation="7dp"
         tools:ignore="MissingConstraints">
 
     </com.google.android.material.tabs.TabLayout>
