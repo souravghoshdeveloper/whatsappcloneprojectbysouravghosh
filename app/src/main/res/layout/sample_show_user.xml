@@ -2,14 +2,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp"
+    android:layout_marginBottom="5dp"
     android:orientation="horizontal">
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:src="@drawable/ic_profile"
         app:civ_border_width="2dp"
         app:civ_border_color="#FF000000"
@@ -18,7 +18,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="85dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -40,18 +40,18 @@
             android:layout_height="23dp"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:paddingTop="1dp"
-            android:paddingRight="5dp"
+            android:paddingTop="2dp"
+            android:paddingRight="25dp"
             android:paddingBottom="2dp"
             android:text="Last Massage"
             android:textSize="14sp"
-            android:paddingEnd="5dp" />
+            android:paddingEnd="25dp" />
 
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="18dp"
             android:background="?android:attr/listDivider" />
     </LinearLayout>
 
