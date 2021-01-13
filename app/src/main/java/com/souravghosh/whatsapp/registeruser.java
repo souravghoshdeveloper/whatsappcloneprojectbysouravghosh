@@ -136,6 +136,12 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             editTextFullname.requestFocus();
             return;
         }
+        Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
+        if (regex.matcher(fullname).find()){
+            editTextFullname.setError("You cannot use any special character at your name.");
+            editTextFullname.requestFocus();
+            return;
+        }
 
 
 
