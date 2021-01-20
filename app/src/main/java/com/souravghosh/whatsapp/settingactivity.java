@@ -62,6 +62,7 @@ public class settingactivity extends AppCompatActivity {
         userID = user.getUid();
 
         final TextView greetingTextView = (TextView) findViewById(R.id.greeting);
+        final TextView useridTextview = (TextView) findViewById(R.id.userid);
         final TextView FullNameTextView = (TextView) findViewById(R.id.fullname);
         final TextView emailTextView = (TextView) findViewById(R.id.emailaddress);
         final TextView ageTextView = (TextView) findViewById(R.id.age);
@@ -72,12 +73,14 @@ public class settingactivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userprofile = snapshot.getValue(User.class);
                 if (userprofile != null){
+                    String userid = user.getUid();
                     String fullName = userprofile.fullName;
                     String email = userprofile.email;
                     String age = userprofile.age;
                     String gender = userprofile.gender;
 
                     greetingTextView.setText("WellCome, " + fullName + "!");
+                    useridTextview.setText(userid);
                     FullNameTextView.setText(fullName);
                     emailTextView.setText(email);
                     ageTextView.setText(age);

@@ -34,6 +34,27 @@
         android:layout_marginLeft="15dp"/>
 
     <TextView
+        android:id="@+id/useridtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UserID"
+        app:layout_constraintTop_toBottomOf="@+id/greeting"
+        app:layout_constraintLeft_toLeftOf="@id/greeting"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/greeting"
+        app:layout_constraintLeft_toLeftOf="@id/greeting"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="17dp"/>
+
+    <TextView
         android:id="@+id/emailaddressTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,17 +62,17 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/greeting"
         app:layout_constraintLeft_toLeftOf="@id/greeting"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="95dp"
         android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/emailaddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/emailaddressTitle"
         app:layout_constraintLeft_toLeftOf="@id/emailaddressTitle"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"/>
 
     <TextView
@@ -69,10 +90,10 @@
         android:id="@+id/fullname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/fullnameTitle"
         app:layout_constraintLeft_toLeftOf="@id/emailaddressTitle"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"/>
 
     <TextView
@@ -90,10 +111,10 @@
         android:id="@+id/age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/ageTitle"
         app:layout_constraintLeft_toLeftOf="@id/fullnameTitle"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"/>
 
     <TextView
@@ -111,10 +132,10 @@
         android:id="@+id/gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/genderTitle"
         app:layout_constraintLeft_toLeftOf="@id/fullnameTitle"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
