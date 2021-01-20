@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -34,10 +35,11 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
     private EditText editTextFullname, editTextage, editTextemail, editTextpassword, editTextconfirmpassword;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
+    private ImageView show_pass_btn, show_pass_btn1;
 
     private ProgressBar progressbar;
 
-    CheckBox showpassword, termsandconditions;
+    CheckBox termsandconditions;
 
     private FirebaseAuth mAuth;
     @Override
@@ -63,6 +65,11 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         editTextconfirmpassword = (EditText) findViewById(R.id.confirmpassword);
         radioGroup = (RadioGroup) findViewById(R.id.genderButton);
 
+
+
+
+
+
         termsandconditions = findViewById(R.id.termsandconditions);
 
 
@@ -79,23 +86,41 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-
-
         progressbar = (ProgressBar) findViewById(R.id.progressBar);
 
-        editTextpassword = findViewById(R.id.password);
-        showpassword = findViewById(R.id.showpassword);
 
-        showpassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    editTextpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }else {
-                    editTextpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
+    }
+
+    public void ShowHidePass(View view) {
+
+        if(view.getId()==R.id.show_pass_btn){
+            if(editTextpassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                ((ImageView)(view)).setImageResource(R.drawable.ic_visibility_off);
+                //Show Password
+                editTextpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
             }
-        });
+            else{
+                ((ImageView)(view)).setImageResource(R.drawable.ic_visibility);
+                //Hide Password
+                editTextpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        }
+    }
+
+    public void ShowHideConPass(View view) {
+
+        if(view.getId()==R.id.show_pass_btn1){
+            if(editTextconfirmpassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                ((ImageView)(view)).setImageResource(R.drawable.ic_visibility_off);
+                //Show Password
+                editTextconfirmpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else{
+                ((ImageView)(view)).setImageResource(R.drawable.ic_visibility);
+                //Hide Password
+                editTextconfirmpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        }
     }
 
     @Override
