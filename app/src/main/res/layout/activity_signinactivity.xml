@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/whatsapp"
-        android:textSize="60sp"
+        android:textSize="55sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-black"
         app:layout_constraintTop_toTopOf="parent"
@@ -92,12 +92,14 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
         android:layout_marginTop="24dp"
         android:text="@string/register"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signin" />
 
     <TextView
@@ -105,9 +107,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="48dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
         android:text="@string/forget_password"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/register"
         app:layout_constraintTop_toTopOf="@id/register" />
 
@@ -143,7 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Developer Informaction"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"

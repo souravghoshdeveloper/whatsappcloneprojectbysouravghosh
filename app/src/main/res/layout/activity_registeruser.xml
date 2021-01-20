@@ -67,7 +67,7 @@
     <RadioGroup
         android:id="@+id/genderButton"
         android:layout_width="320dp"
-        android:layout_height="37dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
         android:layout_marginTop="13dp"
@@ -81,26 +81,27 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:paddingRight="3dp"
+            android:paddingRight="13dp"
             android:text="@string/gender"
-            android:textSize="20sp"
+            android:textSize="17sp"
             tools:ignore="MissingConstraints" />
 
         <RadioButton
             android:id="@+id/male"
-            android:layout_width="83dp"
+            android:layout_width="95dp"
             android:layout_height="wrap_content"
+            android:paddingRight="15dp"
             android:checked="false"
             android:text="@string/male" />
 
         <RadioButton
             android:id="@+id/female"
-            android:layout_width="wrap_content"
+            android:layout_width="95dp"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:paddingRight="5dp"
+            android:paddingRight="15dp"
             android:text="@string/female" />
     </RadioGroup>
 
@@ -154,8 +155,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:text="Show Password"
+        android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/registeruser"
-        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/confirmpassword"
@@ -166,8 +168,6 @@
         android:id="@+id/termsandconditions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
         android:textSize="8sp"
@@ -182,8 +182,6 @@
         android:id="@+id/termsandconditionstext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
