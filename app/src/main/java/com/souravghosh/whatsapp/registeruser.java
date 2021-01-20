@@ -2,7 +2,9 @@ package com.souravghosh.whatsapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -27,6 +30,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.souravghosh.whatsapp.databinding.ActivityChatDetailBinding;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.regex.Pattern;
 
 public class registeruser extends AppCompatActivity implements View.OnClickListener {
@@ -64,9 +69,6 @@ public class registeruser extends AppCompatActivity implements View.OnClickListe
         editTextpassword = (EditText) findViewById(R.id.password);
         editTextconfirmpassword = (EditText) findViewById(R.id.confirmpassword);
         radioGroup = (RadioGroup) findViewById(R.id.genderButton);
-
-
-
 
 
 
